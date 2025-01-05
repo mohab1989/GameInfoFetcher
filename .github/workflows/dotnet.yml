@@ -23,15 +23,15 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore GameInfoFetcher.sln
+      run: dotnet restore GameInfoFetcher.sln -c Release
       working-directory: "./BackEnd/"
       
     - name: Build
-      run: dotnet build --no-restore GameInfoFetcher.sln
+      run: dotnet build --no-restore GameInfoFetcher.sln -c Release
       working-directory: "./BackEnd/"
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal -c Release
       working-directory: "./BackEnd/"
       env:
         MEMCACHED: ${{ secrets.MEMCACHED }}

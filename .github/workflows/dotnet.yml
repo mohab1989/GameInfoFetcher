@@ -6,10 +6,10 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
-    paths: ["BackEnd/**"]
+    paths: ["BackEnd/**", "**/dotnet.yml"]
   pull_request:
     branches: [ "main" ]
-    paths: ["BackEnd/**"]
+    paths: ["BackEnd/**", "**/dotnet.yml"]
 
 jobs:
   build:
@@ -27,10 +27,11 @@ jobs:
       working-directory: "./BackEnd/"
       
     - name: Build
-      run: dotnet build --no-restore GameInfoFetcher.sln
+      run: dotnet build --no-restore GameInfoFetcher.sln -c Release
       working-directory: "./BackEnd/"
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal -c Release
       working-directory: "./BackEnd/"
-      env: ${{ secrets.MEMCACHED }}
+      env:
+        MEMCACHED: ${{ secrets.MEMCACHED }}

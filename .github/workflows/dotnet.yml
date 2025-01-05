@@ -6,10 +6,10 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
-    paths: ["BackEnd/**"]
+    paths: ["BackEnd/**", "**/dotnet.yml"]
   pull_request:
     branches: [ "main" ]
-    paths: ["BackEnd/**"]
+    paths: ["BackEnd/**", "**/dotnet.yml"]
 
 jobs:
   build:

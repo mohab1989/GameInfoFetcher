@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameInfoFetcher", "GameInfoFetcher\GameInfoFetcher.csproj", "{74286C8A-6BF4-43AA-AE88-0BC361DEE05F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameInfoFetcher.Tests", "GameInfoFetcher.Tests\GameInfoFetcher.Tests.csproj", "{F1B844A0-94BF-4881-9504-FE46CD723B3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74286C8A-6BF4-43AA-AE88-0BC361DEE05F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74286C8A-6BF4-43AA-AE88-0BC361DEE05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74286C8A-6BF4-43AA-AE88-0BC361DEE05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74286C8A-6BF4-43AA-AE88-0BC361DEE05F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B844A0-94BF-4881-9504-FE46CD723B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B844A0-94BF-4881-9504-FE46CD723B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B844A0-94BF-4881-9504-FE46CD723B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B844A0-94BF-4881-9504-FE46CD723B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

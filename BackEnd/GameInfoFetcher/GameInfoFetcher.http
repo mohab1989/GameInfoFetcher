@@ -1,0 +1,6 @@
+@GameInfoFetcher_HostAddress = http://localhost:5009
+
+GET {{GameInfoFetcher_HostAddress}}/GameInfo/
+Accept: application/json
+
+###

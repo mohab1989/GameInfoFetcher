@@ -1,0 +1,36 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: ["BackEnd/**"]
+  pull_request:
+    branches: [ "main" ]
+    paths: ["BackEnd/**"]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore GameInfoFetcher.sln
+      working-directory: "./BackEnd/"
+      
+    - name: Build
+      run: dotnet build --no-restore GameInfoFetcher.sln
+      working-directory: "./BackEnd/"
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: "./BackEnd/"
+      env: ${{ secrets.MEMCACHED }}

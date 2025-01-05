@@ -1,5 +1,6 @@
 ﻿using Enyim.Caching;
 using GameInfoFetcher.Controllers.Api;
+using GameInfoFetcher.Mappers;
 using GameInfoFetcher.Models;
 using GameInfoFetcher.Responses;
 using GameInfoFetcher.Services;
@@ -28,29 +29,27 @@ public sealed class GameInfoControllerTest
     [TestInitialize]
     public void Setup()
     {
-        var configuration = new ConfigurationBuilder()
+        IConfigurationRoot configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
             .AddUserSecrets<GameInfoController>(optional: true) // Secrets.json for dev
             .AddEnvironmentVariables() // env var for prod
             .Build();
 
-        var memcachedConfig = GetSection(configuration,
-            "Memcached",
-            "ServerAddress", "ServerPort", "UserName", "Password");
+        var memcachedConfig = configuration.MapToCacheConfig("Memcached");
 
         var serviceProvider = new ServiceCollection()
             .AddEnyimMemcached(options =>
             {
                 options.AddServer(
-                    memcachedConfig["ServerAddress"],
-                    int.Parse(memcachedConfig["ServerPort"]!)
+                    memcachedConfig.ServerAddress,
+                    memcachedConfig.ServerPort
                     );
 
                 options.AddPlainTextAuthenticator(
                     "",
-                    memcachedConfig["UserName"],
-                    memcachedConfig["Password"]
+                    memcachedConfig.UserName,
+                    memcachedConfig.Password
                     );
 
                 configuration.GetSection("enyimMemcached").Bind(options);
@@ -135,20 +134,4 @@ public sealed class GameInfoControllerTest
         return reader.ReadToEnd();
     }
 
-    IConfigurationSection GetSection(IConfigurationRoot config, string sectionName, params string[] variableNames)
-    {
-        var configSection = config.GetSection(sectionName);
-
-        if (configSection is null)
-            throw new InvalidOperationException($"Configuration Section '{sectionName}' is missing.");
-
-        foreach (var variableName in variableNames)
-        {
-            if (string.IsNullOrWhiteSpace(configSection[variableName]))
-                throw new InvalidOperationException(
-                    $"Environment Variable '{variableName}' in Section '{sectionName}' was not defined.");
-        }
-
-        return configSection;
-    }
 }

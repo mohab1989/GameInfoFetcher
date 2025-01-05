@@ -1,3 +1,4 @@
+using GameInfoFetcher.Mappers;
 using GameInfoFetcher.Models;
 using GameInfoFetcher.Services;
 using GameInfoFetcher.Services.Interfaces;
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var corsSettings = builder.Configuration.GetSection("CorsSettings").Get<CorsSettings>()??
+var corsSettings = builder.Configuration.GetSection("CorsSettings").Get<CorsSettings>() ??
     throw new InvalidOperationException("CorsSettings must be defined");
 
 builder.Services.AddCors(options =>
@@ -38,12 +39,12 @@ builder.Services.AddHealthChecks();
 
 builder.Configuration.AddUserSecrets<Program>();
 
-var memcachedConfig = GetSection("Memcached", "ServerAddress", "ServerPort", "UserName", "Password");
+var cachedConfig = builder.Configuration.MapToCacheConfig("Memcached");
 
 builder.Services.AddEnyimMemcached(options =>
 {
-    options.AddServer(memcachedConfig["ServerAddress"], int.Parse(memcachedConfig["ServerPort"]!));
-    options.AddPlainTextAuthenticator("", memcachedConfig["UserName"], memcachedConfig["Password"]);
+    options.AddServer(cachedConfig.ServerAddress, cachedConfig.ServerPort);
+    options.AddPlainTextAuthenticator("", cachedConfig.UserName, cachedConfig.Password);
 });
 
 builder.Services.AddSingleton<ICache<string, GameInfo>, Cache>();

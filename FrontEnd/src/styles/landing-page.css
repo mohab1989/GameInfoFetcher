@@ -1,0 +1,108 @@
+:root {
+  --font-family-roboto: 'Roboto', sans-serif;
+}
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.landingpage {
+  width: 100%;
+  height: 100vh;
+  background-color: #013c38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.39vw;
+  position: relative;
+  z-index: 0;
+  min-height: 500px; /* Minimum height to prevent overlapping */
+}
+
+.logo {
+  position: absolute;
+  left: 1.11vw;
+  top: 0;
+  width: clamp(16px, 23.61vw, 340px); /* Set max width to 340px */
+  height: clamp(16px, 24.51vh, 353px); /* Set max height to 353px */
+  z-index: 1;
+}
+
+.slogan {
+  position: absolute;
+  left: 25.83vw;
+  top: 1.66vh;
+  width: 73.06vw;
+  max-width: 73.06vw;
+  max-height: 24.51vh;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 800;
+  line-height: 90%;
+  text-transform: capitalize;
+  color: #D6DF36;
+  align-items: center;
+  z-index: 1;
+  font-size: clamp(6px, 6.67vw, 69px); /* Set a min, preferred, and max font size */
+}
+
+.illustration {
+  position: absolute;
+  width: clamp(20px, 47.92vw, 690px); /* Set max width to 690px */
+  height: clamp(20px, 47.42vh, 682px); /* Set max height to 682px */
+  left: 50.92vw;
+  top: 18.54vh;
+  z-index: 1;
+}
+
+.instructions {
+  position: absolute;
+  left: 1.11vw;
+  top: 26.73vh;
+  width: 48.33vw;
+  height: 17.02vh;
+  font-family: var(--font-family-roboto);
+  font-weight: bold;
+  text-align: left;
+  color: rgba(214, 223, 54, 1);
+  z-index: 1;
+  font-size: clamp(6px, 1.39vw, 20px); /* Set a min, preferred, and max font size */
+}
+
+.button-upload {
+  /* Button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: clamp(100px, 19.17vw, 276px); /* Set max width to 276px */
+  height: clamp(30px, 7.02vh, 101px); /* Set max height to 101px */
+  left: 3.33vw;
+  top: 50.87vh;
+  background: linear-gradient(97.4deg, #D6DF36 5.97%, #013c38 98.58%);
+  color: #013C38;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2.5vw;
+  line-height: 90%;
+  border-radius: 5.77vw;
+  z-index: 2;
+}
+
+.loading-spinner {
+  width: 1.67vw;
+  height: 1.67vw;
+  border: 0.28vw solid #013c38;
+  border-top: 0.28vw solid #013c38;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

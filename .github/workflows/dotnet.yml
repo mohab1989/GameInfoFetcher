@@ -12,7 +12,7 @@ on:
     paths: ["BackEnd/**", "**/dotnet.yml"]
 
 jobs:
-  build:
+  BackendCI:
 
     runs-on: windows-latest
 

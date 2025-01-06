@@ -9,7 +9,7 @@ on:
     paths: ["FrontEnd/**", "**/react.yml"]
 
 jobs:
-  test:
+  FrontendCI:
     runs-on: ubuntu-latest
 
     steps:

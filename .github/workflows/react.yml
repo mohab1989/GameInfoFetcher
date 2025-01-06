@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: '20.12'
           cache: 'yarn' # Enable Yarn caching for faster builds
+          cache-dependency-path: 'FrontEnd/yarn.lock'
 
       - name: Install dependencies using yarn
         run: |

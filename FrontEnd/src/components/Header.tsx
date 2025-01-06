@@ -7,7 +7,8 @@ export default class Header extends React.Component
         return <div> 
                 <img src={`${process.env.PUBLIC_URL}/logo.png`} className="logo" alt="game-info-fetcher-high-resolution-logo-1" />
                 <p className="slogan">
-                What to play next, made easier.</p>
+                What to play next,<br/>
+                made easier.</p>
             </div>;
     }
 }

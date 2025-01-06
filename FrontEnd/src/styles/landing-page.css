@@ -7,93 +7,88 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #013C38;
 }
 
 .landingpage {
-  width: 100%;
-  height: 100vh;
-  background-color: #013c38;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center elements horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  width: 100%;
+  height: 100%;
+  background-color: #013c38;
   padding: 1.39vw;
   position: relative;
   z-index: 0;
   min-height: 500px; /* Minimum height to prevent overlapping */
+  gap: 20px;
+}
+
+.landingpage > * {
+  display: flex;
+  justify-content: center; /* Center content inside each item */
+  align-items: center; /* Center content inside each item */
 }
 
 .logo {
-  position: absolute;
-  left: 1.11vw;
-  top: 0;
-  width: clamp(16px, 23.61vw, 340px); /* Set max width to 340px */
-  height: clamp(16px, 24.51vh, 353px); /* Set max height to 353px */
+  width: clamp(50px, 50vw, 340px); /* Set max width to 340px */
+  aspect-ratio: 400/340; /* Fixed aspect ratio */
+  height: auto;
   z-index: 1;
 }
 
 .slogan {
-  position: absolute;
-  left: 25.83vw;
-  top: 1.66vh;
-  width: 73.06vw;
-  max-width: 73.06vw;
-  max-height: 24.51vh;
-  font-family: 'Roboto';
-  font-style: normal;
+  width: 50vw;
+  aspect-ratio: 724/169;
+  height: auto;
+  flex-wrap: nowrap;
+  max-width: 724px;
+  font-family: var(--font-family-roboto);
   font-weight: 800;
   line-height: 90%;
   text-transform: capitalize;
   color: #D6DF36;
-  align-items: center;
-  z-index: 1;
-  font-size: clamp(6px, 6.67vw, 69px); /* Set a min, preferred, and max font size */
-}
-
-.illustration {
-  position: absolute;
-  width: clamp(20px, 47.92vw, 690px); /* Set max width to 690px */
-  height: clamp(20px, 47.42vh, 682px); /* Set max height to 682px */
-  left: 50.92vw;
-  top: 18.54vh;
-  z-index: 1;
+  text-align: center;
+  font-size: clamp(6px, 6.67vw, 60px); /* Responsive font size */
 }
 
 .instructions {
-  position: absolute;
-  left: 1.11vw;
-  top: 26.73vh;
-  width: 48.33vw;
-  height: 17.02vh;
+  width: 50vw;
+  padding-left: 10vw;
+  aspect-ratio: 48.33 / 17.02; /* Fixed aspect ratio */
+  height: auto;
   font-family: var(--font-family-roboto);
   font-weight: bold;
   text-align: left;
   color: rgba(214, 223, 54, 1);
-  z-index: 1;
-  font-size: clamp(6px, 1.39vw, 20px); /* Set a min, preferred, and max font size */
+  font-size: clamp(6px, 1.39vw, 20px); /* Responsive font size */
+}
+
+.illustration {
+  aspect-ratio: 690 / 682; /* Fixed aspect ratio */
+  width: clamp(20px, 25vw, 690px); /* Set max width to 690px */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .button-upload {
-  /* Button */
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  width: clamp(100px, 19.17vw, 276px); /* Set max width to 276px */
-  height: clamp(30px, 7.02vh, 101px); /* Set max height to 101px */
-  left: 3.33vw;
-  top: 50.87vh;
+  aspect-ratio: 2.73; /* Fixed aspect ratio */
+  width: clamp(50px, 15vw, 276px); /* Set max width to 276px */
+  height: auto;
   background: linear-gradient(97.4deg, #D6DF36 5.97%, #013c38 98.58%);
   color: #013C38;
-  font-family: 'Roboto';
-  font-style: normal;
+  font-family: var(--font-family-roboto);
   font-weight: 800;
   font-size: 2.5vw;
-  line-height: 90%;
   border-radius: 5.77vw;
   z-index: 2;
 }
 
 .loading-spinner {
+  aspect-ratio: 1; /* Circle aspect ratio */
   width: 1.67vw;
   height: 1.67vw;
   border: 0.28vw solid #013c38;
@@ -102,7 +97,12 @@
   animation: spin 1s linear infinite;
 }
 
+/* Media Queries for responsiveness */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

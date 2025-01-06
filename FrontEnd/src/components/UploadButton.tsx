@@ -10,7 +10,7 @@ export default class UploadButton extends React.Component {
   }
 
   state = {
-    isLoading: false, // Track loading state
+    isLoading: false,
   };
 
   verifyFile = async (file: File): Promise<string | null> => {
@@ -32,7 +32,7 @@ export default class UploadButton extends React.Component {
       return `The file contains lines exceeding the maximum allowed length of ${MAX_LINE_LENGTH} characters.`;
     }
 
-    return null; // No errors
+    return null;
   };
 
   downloadCsv = (csv: string, filename: string) => {
@@ -46,15 +46,14 @@ export default class UploadButton extends React.Component {
   };
 
   handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ isLoading: true }); // Set loading to true
+    this.setState({ isLoading: true });
 
     const file = event.target.files?.[0];
     if (file) {
-      // Validate the file
       const error = await this.verifyFile(file);
       if (error) {
         alert(error);
-        event.target.value = ''; // Reset file input
+        event.target.value = '';
         return;
       }
 
@@ -84,7 +83,6 @@ export default class UploadButton extends React.Component {
           }
         }
 
-        // Convert JSON to CSV using json2csv
         const csv = Papa.unparse(allData);
         const fileNameWithoutExtension = file.name.slice(0, -file.name.split('.').pop()!.length - 1);
         this.downloadCsv(csv, `${fileNameWithoutExtension}.csv`);

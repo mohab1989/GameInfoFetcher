@@ -1,0 +1,43 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: ["FrontEnd/**"]
+  pull_request:
+    branches: [ "main" ]
+    paths: ["FrontEnd/**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22.12.0'
+
+    - name: Set up Yarn
+      uses: actions/setup-yarn@v2
+      with:
+        version: '1.22.22'
+
+    - name: Install dependencies using node class
+      run: |
+        # Initialize the project (if not already initialized) and install dependencies
+        yarn install 
+        yarn build
+      working-directory: "./FrontEnd/"
+    
+    - name: Run tests using react-scripts with --ci flag
+      run: |
+        # Run tests non-interactively with react-scripts
+        yarn test --watchAll=false
+      working-directory: "./FrontEnd/build"

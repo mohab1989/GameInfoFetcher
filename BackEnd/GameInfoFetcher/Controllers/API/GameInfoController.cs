@@ -58,8 +58,6 @@ class GameInfoController : ControllerBase
         return Ok(result);
     }
 
-    // checkout https://rawg.io/@mohab1989/apikey and https://api.rawg.io/docs/#operation/games_read
-    // $response = Invoke-WebRequest -Uri "https://api.rawg.io/api/games?key=4c2c99d975d84ef9a95aec8fad6611a1&search={Witcher 3}" -Method Get
     [HttpGet("{gameName}")]
     public async
     Task<ActionResult<ResponseModels.GameInfo>> GetGameInfo(string gameName)
@@ -86,8 +84,7 @@ class GameInfoController : ControllerBase
         if (id is not null)
         {
             GameInfo gi = await _cache.GetGameInfo(id);
-            if (gi.IsNotDefault())
-                return gi;
+            if (gi.IsNotDefault()) return gi;
         }
 
         using IResponse response = id is null ?

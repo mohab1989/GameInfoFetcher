@@ -88,11 +88,10 @@
 }
 
 .loading-spinner {
-  aspect-ratio: 1; /* Circle aspect ratio */
-  width: 1.67vw;
-  height: 1.67vw;
+  aspect-ratio: 1;
+  width: 3.0vw;
   border: 0.28vw solid #013c38;
-  border-top: 0.28vw solid #013c38;
+  border-top: 0.28vw solid #D6DF36;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

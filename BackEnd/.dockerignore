@@ -1,0 +1,7 @@
+**/.vs/
+GameInfoFetcher.Tests/
+TestResults/
+**/db/
+**/bin/
+**/obj/
+**/${LiteDbConnectionString}

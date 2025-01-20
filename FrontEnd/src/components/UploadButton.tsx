@@ -54,6 +54,7 @@ export default class UploadButton extends React.Component {
       if (error) {
         alert(error);
         event.target.value = '';
+        this.setState({ isLoading: false });
         return;
       }
 
@@ -70,7 +71,7 @@ export default class UploadButton extends React.Component {
         // Loop through game names in chunks
         for (let i = 0; i < gameNames.length; i += chunkSize) {
           const chunk = gameNames.slice(i, i + chunkSize);
-          const url = `https://localhost:7107/GameInfo/games?${chunk.map(game => `gameNames=${encodeURIComponent(game)}`).join('&')}`;
+          const url = `${process.env.REACT_APP_API_URL}/GameInfo/games?${chunk.map(game => `gameNames=${encodeURIComponent(game)}`).join('&')}`;
           
           try {
             const response: Response = await fetch(url, {

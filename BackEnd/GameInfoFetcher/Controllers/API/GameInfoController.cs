@@ -44,6 +44,9 @@ class GameInfoController : ControllerBase
 
         foreach (var name in gameNames)
         {
+            if (string.IsNullOrEmpty(name))
+                return BadRequest("Game name must not be null or empty.");
+
             try
             {
                 var gi = await GetGameDetails(name);
@@ -62,6 +65,9 @@ class GameInfoController : ControllerBase
     public async
     Task<ActionResult<ResponseModels.GameInfo>> GetGameInfo(string gameName)
     {
+        if (string.IsNullOrEmpty(gameName))
+            return BadRequest("Game name must not be null or empty.");
+
         try
         {
             return Ok((await GetGameDetails(gameName)).MapToResponse());

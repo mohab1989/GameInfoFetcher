@@ -44,8 +44,8 @@ which I hope will help others manage their pastime activities as well.
 - GitHub Secrets
 
 ## Working On
-- Automating the deployment process using Docker (Dockerfile for frontend ready).
-- Backend address in the frontend code must be configurable.
-- Host the full app on a cloud service (currently only frontend hosted on Google Cloud).
-- Improve security.
-- Publish.
+- Track nginx and config file while keeping secrets safe.
+- Publish docker-compose built images to docker registery.
+- Consume image from registery and orchestrate deployment on hosting service using docker swarm.
+
+## [Hosted Website](http://35.246.219.119:3000/)

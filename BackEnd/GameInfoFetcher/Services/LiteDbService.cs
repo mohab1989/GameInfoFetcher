@@ -4,11 +4,13 @@ using Nito.AsyncEx;
 
 namespace GameInfoFetcher.Services;
 
-public 
+public
 class LiteDbService : IServerlessDbService
 {
     class SlugIdMapping
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
         public string GameSlug { get; set; }
         public string GameId { get; set; }
     }
@@ -42,11 +44,12 @@ class LiteDbService : IServerlessDbService
             _collection.Insert(newMapping);
             return true;
         }
-        else
+        else if (id != existingMapping.GameId)
         {
             existingMapping.GameId = id;
             return _collection.Update(existingMapping);
         }
+        return true;
     }
 
     public void Dispose() => _db.Dispose();

@@ -44,8 +44,9 @@ which I hope will help others manage their pastime activities as well.
 - GitHub Secrets
 
 ## Working On
+- Implement repository pattern for data access.
 - Track nginx and config file while keeping secrets safe.
 - Publish docker-compose built images to docker registery.
 - Consume image from registery and orchestrate deployment on hosting service using docker swarm.
 
-## [Hosted Website](http://35.246.219.119:3000/)
+## [Hosted Website (Broken since april 9th 2025 need to renew subscription to google cloud)](http://35.246.219.119:3000/)
